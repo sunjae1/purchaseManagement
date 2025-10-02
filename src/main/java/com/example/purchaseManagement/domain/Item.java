@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -31,8 +32,9 @@ public class Item {
 
     private Integer baseStock; //기초 재고
 
-    @OneToMany(mappedBy = "item")
-    private List<Vendor> vendor; //공급처
+    @ManyToOne
+    @JoinColumn(name = "office_id")
+    private Office office;
 
     private Integer purchasePrice; //매입 단가(순수 단가)
 
@@ -47,7 +49,6 @@ public class Item {
     private LocalDate transactionDate; // 거래일자
 
     private String memo;
-
 
 
 
